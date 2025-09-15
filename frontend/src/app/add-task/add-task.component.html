@@ -1,0 +1,26 @@
+<form (ngSubmit)="onSubmit()" #taskForm="ngForm">
+    <div>
+        <label for="titulo">Título: </label>
+        <input 
+        type="text"
+        id="titulo"
+        name="titulo"
+        [(ngModel)]="newTask.titulo"
+        required
+        placeholder="Ex: Comprar café"
+        >
+    </div>
+
+    <div>
+        <label for="descricao">Descrição: </label>
+        <input
+        type="text"
+        id="descricao"
+        name="descricao"
+        [(ngModel)]="newTask.descricao"
+        placeholder="Opcional"
+        >
+    </div>
+
+    <button type="submit" disable="!taskForm.form.valid">Adicionar Tarefa</button>
+</form>
