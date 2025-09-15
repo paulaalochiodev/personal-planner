@@ -7,8 +7,12 @@
 <h2>Minhas Tarefas</h2>
 <ul>
   <li *ngFor="let tarefa of tarefas" [class.tarefa-concluida]="tarefa.concluida">
-    <input type="checkbox" [checked]="tarefa.concluida">
+    <input type="checkbox" [checked]="tarefa.concluida" (change)="toggleConcluida(tarefa)">
     <strong>{{ tarefa.titulo }}</strong>
     <p>{{ tarefa.descricao }}</p>
+
+    <button mat-icon-button color="warn" (click)="deleteTask(tarefa.id)" title="Deletar tarefa">
+      <mat-icon>delete</mat-icon>
+    </button>
   </li>
 </ul>

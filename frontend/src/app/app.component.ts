@@ -23,5 +23,31 @@ export class AppComponent implements OnInit {
 
   adicionarTarefaNaLista(novaTarefa: Tarefa) {
   this.tarefas.push(novaTarefa);
-}
+  }
+
+  toggleConcluida(tarefa: Tarefa): void {
+    tarefa.concluida = !tarefa.concluida;
+
+    this.taskService.updateTask(tarefa).subscribe({
+      next: (tarefaAtualizada) => {
+        console.log('Tarefa atualizada com sucesso!', tarefaAtualizada);
+      },
+      error: (err) => {
+        console.error('Erro ao atualizar tarefa:', err);
+        tarefa.concluida = !tarefa.concluida;
+      }
+    });
+  }
+
+  deleteTask(id: string): void {
+    this.taskService.deleteTask(id).subscribe({
+      next: () => {
+        console.log('Tarefa deletada com sucesso!');
+        this.tarefas = this.tarefas.filter(tarefa => tarefa.id !== id);
+      },
+      error: (err) => {
+        console.error('Erro ao deletar tarefa:', err);
+      }
+    });
+  }
 }
