@@ -1,0 +1,21 @@
+.tarefa-concluida {
+  text-decoration: line-through;
+  color: #777;
+}
+
+/* Bônus: um pouco de estilo para a lista */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+li p {
+  margin: 5px 0 0 20px;
+  font-size: 0.9em;
+  color: #555;
+}

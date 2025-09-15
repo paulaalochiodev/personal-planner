@@ -1,26 +1,28 @@
-<form (ngSubmit)="onSubmit()" #taskForm="ngForm">
-    <div>
-        <label for="titulo">Título: </label>
-        <input 
-        type="text"
-        id="titulo"
-        name="titulo"
-        [(ngModel)]="newTask.titulo"
-        required
-        placeholder="Ex: Comprar café"
-        >
-    </div>
+<form (ngSubmit)="onSubmit()" #taskForm="ngForm" class="task-form">
 
-    <div>
-        <label for="descricao">Descrição: </label>
-        <input
-        type="text"
-        id="descricao"
-        name="descricao"
-        [(ngModel)]="newTask.descricao"
-        placeholder="Opcional"
-        >
-    </div>
+  <mat-form-field appearance="outline">
+    <mat-label>Título</mat-label>
+    <input
+      matInput
+      name="titulo"
+      [(ngModel)]="newTask.titulo"
+      required
+      placeholder="Ex: Comprar café"
+    >
+  </mat-form-field>
 
-    <button type="submit" disable="!taskForm.form.valid">Adicionar Tarefa</button>
+  <mat-form-field appearance="outline">
+    <mat-label>Descrição</mat-label>
+    <input
+      matInput
+      name="descricao"
+      [(ngModel)]="newTask.descricao"
+      placeholder="Opcional"
+    >
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="!taskForm.form.valid">
+    Adicionar Tarefa
+  </button>
+
 </form>
