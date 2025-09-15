@@ -1,0 +1,41 @@
+@use '@angular/material' as mat;
+
+// Inclui os estilos e tipografia base (deve ser feito apenas uma vez)
+@include mat.core();
+
+/*
+  PALETA DO SITE:
+
+  - Cor Primária (principal): #B3544F (Terracota)
+  - Cor de Destaque (accent): #D6C396 (Bege)
+  - Cor de Fundo: #E7FCCF (Verde claro)
+  - Cor do Texto: #1F0B0C (Quase preto)
+*/
+
+$planner-primary-palette: mat.define-palette(mat.$red-palette, 300, 200, 400);
+$planner-accent-palette: mat.define-palette(mat.$yellow-palette, 300, 200, 400);
+$planner-warn-palette: mat.define-palette(mat.$red-palette, 500);
+
+$planner-theme: mat.define-light-theme((
+  color: (
+    primary: $planner-primary-palette,
+    accent: $planner-accent-palette,
+    warn: $planner-warn-palette,
+  )
+));
+
+@include mat.all-component-themes($planner-theme);
+
+
+/* ===== ESTILOS GLOBAIS ===== */
+
+html, body {
+  height: 100%;
+  background-color: #E7FCCF;
+  color: #1F0B0C;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

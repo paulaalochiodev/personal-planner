@@ -11,12 +11,20 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { MatDialogModule } from '@angular/material/dialog';  
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { TaskListComponent } from './pages/task-list/task-list.component';
+import { CalendarComponent } from './pages/calendar/calendar.component';   
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddTaskComponent
+    AddTaskComponent,
+    TaskListComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +36,11 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCardModule,     
+    MatToolbarModule,
+    MatSlideToggleModule,
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

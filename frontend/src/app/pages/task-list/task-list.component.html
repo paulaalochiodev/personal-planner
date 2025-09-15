@@ -1,0 +1,27 @@
+<main class="content">
+  <div class="header">
+    <h2>Minhas Tarefas</h2>
+    <button mat-fab color="primary" (click)="openAddTaskDialog()" title="Adicionar nova tarefa">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <div class="task-list">
+    <mat-card *ngFor="let tarefa of tarefas" [class.tarefa-concluida]="tarefa.concluida">
+      <mat-card-header>
+        <mat-card-title>{{ tarefa.titulo }}</mat-card-title>
+        <mat-card-subtitle *ngIf="tarefa.descricao">{{ tarefa.descricao }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions align="end">
+        <mat-slide-toggle
+          [checked]="tarefa.concluida"
+          (change)="toggleConcluida(tarefa)">
+          Concluída
+        </mat-slide-toggle>
+        <button mat-icon-button color="warn" (click)="deleteTask(tarefa.id)" title="Deletar tarefa">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</main>
