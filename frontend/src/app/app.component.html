@@ -1,6 +1,8 @@
 <h1>Planejador Pessoal</h1>
 
-<app-add-task (addedTask)="adicionarTarefaNaLista($event)"></app-add-task>
+<button mat-fab color="primary" (click)="openAddTaskDialog()" title="Adicionar nova tarefa">
+  <mat-icon>add</mat-icon>
+</button>
 
 <hr>
 

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from './task.service';
 import { Tarefa } from './tarefa.model';
+import { MatDialog } from '@angular/material/dialog';
+import { AddTaskComponent } from './add-task/add-task.component'; 
 
 @Component({
   selector: 'app-root',
@@ -12,12 +14,28 @@ export class AppComponent implements OnInit {
 
   tarefas: Tarefa[] = [];
 
-  constructor(private taskService: TaskService) {}
+  constructor(
+    private taskService: TaskService, 
+    public dialog: MatDialog) 
+    
+    {}
 
   ngOnInit(): void {
     this.taskService.getTarefas().subscribe(dadosDaApi => {
-      console.log('Dados recebidos da API:', dadosDaApi);
       this.tarefas = dadosDaApi;
+    });
+  }
+
+  openAddTaskDialog(): void {
+    const dialogRef = this.dialog.open(AddTaskComponent, {
+      width: '450px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('O dialog foi fechado. Resultado:', result);
+      if (result) {
+        this.adicionarTarefaNaLista(result);
+      }
     });
   }
 

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Tarefa } from '../tarefa.model';
 import { TaskService } from '../task.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-task',
@@ -17,14 +18,20 @@ export class AddTaskComponent {
     concluida: false
   };
 
-  constructor(private taskService: TaskService) { }
+  constructor(
+    private taskService: TaskService,
+    public dialogRef: MatDialogRef<AddTaskComponent>
+  ) { }
 
   onSubmit(): void {
     this.taskService.addTask(this.newTask).subscribe(savedTask => {
       this.addedTask.emit(savedTask);
 
-      this.newTask.titulo = '';
-      this.newTask.descricao = '';
+      this.dialogRef.close(savedTask);
     })
+  }
+
+  onCancel(): void {
+    this.dialogRef.close();
   }
 }
