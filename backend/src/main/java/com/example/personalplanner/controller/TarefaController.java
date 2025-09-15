@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -28,19 +29,15 @@ public class TarefaController {
         return tarefaRepository.findAll();
     }
 
-    // NOVO: Endpoint para BUSCAR uma tarefa por ID
-    // Ex: GET http://localhost:8080/api/tarefas/1
     @GetMapping("/{id}")
-    public ResponseEntity<Tarefa> findById(@PathVariable Long id) {
+    public ResponseEntity<Tarefa> findById(@PathVariable UUID id) {
         return tarefaRepository.findById(id)
                 .map(tarefa -> ResponseEntity.ok(tarefa))
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // NOVO: Endpoint para ATUALIZAR uma tarefa
-    // Ex: PUT http://localhost:8080/api/tarefas/1
     @PutMapping("/{id}")
-    public ResponseEntity<Tarefa> update(@PathVariable Long id, @RequestBody Tarefa tarefaDetalhes) {
+    public ResponseEntity<Tarefa> update(@PathVariable UUID id, @RequestBody Tarefa tarefaDetalhes) {
         return tarefaRepository.findById(id)
                 .map(tarefa -> {
                     tarefa.setTitulo(tarefaDetalhes.getTitulo());
@@ -52,11 +49,10 @@ public class TarefaController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // NOVO: Endpoint para DELETAR uma tarefa
-    // Ex: DELETE http://localhost:8080/api/tarefas/1
+
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT) // Sucesso, mas não retorna conteúdo
-    public void delete(@PathVariable Long id) {
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable UUID id) {
         tarefaRepository.deleteById(id);
     }
 }
