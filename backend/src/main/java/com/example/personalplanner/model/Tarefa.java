@@ -5,6 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
+
+import java.time.LocalDate;
 import java.util.UUID;
 import org.hibernate.annotations.UuidGenerator;
 
@@ -22,4 +24,6 @@ public class Tarefa {
     private String descricao;
 
     private Boolean concluida;
+
+    private LocalDate data;
 }

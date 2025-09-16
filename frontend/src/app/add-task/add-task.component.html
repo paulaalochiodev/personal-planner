@@ -6,10 +6,17 @@
       <mat-label>Título</mat-label>
       <input matInput name="titulo" [(ngModel)]="newTask.titulo" required>
     </mat-form-field>
+
     <mat-form-field appearance="outline">
       <mat-label>Descrição</mat-label>
       <input matInput name="descricao" [(ngModel)]="newTask.descricao">
     </mat-form-field>
+
+    <mat-form-field appearance="outline">
+    <mat-label>Data da Tarefa</mat-label>
+    <input matInput type="date" name="data" [(ngModel)]="newTask.data">
+  </mat-form-field>
+
   </form>
 </mat-dialog-content>
 

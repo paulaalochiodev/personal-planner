@@ -10,6 +10,7 @@
     <mat-card *ngFor="let tarefa of tarefas" [class.tarefa-concluida]="tarefa.concluida">
       <mat-card-header>
         <mat-card-title>{{ tarefa.titulo }}</mat-card-title>
+        <button (click)="showTask(tarefa)">Visualizar tarefa</button>
         <mat-card-subtitle *ngIf="tarefa.descricao">{{ tarefa.descricao }}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-actions align="end">

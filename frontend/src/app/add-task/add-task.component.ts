@@ -15,7 +15,8 @@ export class AddTaskComponent {
   newTask: Partial<Tarefa> = {
     titulo: '',
     descricao: '',
-    concluida: false
+    concluida: false,
+    data: undefined
   };
 
   constructor(

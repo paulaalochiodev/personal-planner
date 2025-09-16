@@ -67,4 +67,12 @@ export class TaskListComponent {
         }
       });
     }
+
+    showTask(tarefa: Tarefa): void {
+      this.taskService.showTask(tarefa).subscribe({
+        next: () => {
+          console.log
+        }
+      })
+    }
 }
