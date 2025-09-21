@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/tarefas")
+@RequestMapping("/")
 public class TarefaController {
 
     @Autowired

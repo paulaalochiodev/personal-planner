@@ -17,14 +17,24 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { TaskListComponent } from './pages/task-list/task-list.component';
-import { CalendarComponent } from './pages/calendar/calendar.component';   
+import { CalendarComponent } from './pages/calendar/calendar.component';
+import { TaskDetailComponent } from './components/task-detail/task-detail.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent } from './pages/login/login.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';   
 
 @NgModule({
   declarations: [
     AppComponent,
     AddTaskComponent,
     TaskListComponent,
-    CalendarComponent
+    CalendarComponent,
+    TaskDetailComponent,
+    RegisterComponent,
+    LoginComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +50,9 @@ import { CalendarComponent } from './pages/calendar/calendar.component';
     MatCardModule,     
     MatToolbarModule,
     MatSlideToggleModule,
-    FullCalendarModule
+    FullCalendarModule,
+    MatListModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]

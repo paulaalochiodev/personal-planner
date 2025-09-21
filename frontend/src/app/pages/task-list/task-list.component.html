@@ -1,4 +1,5 @@
 <main class="content">
+  <app-sidenav></app-sidenav>
   <div class="header">
     <h2>Minhas Tarefas</h2>
     <button mat-fab color="primary" (click)="openAddTaskDialog()" title="Adicionar nova tarefa">
@@ -7,10 +8,9 @@
   </div>
 
   <div class="task-list">
-    <mat-card *ngFor="let tarefa of tarefas" [class.tarefa-concluida]="tarefa.concluida">
+    <mat-card *ngFor="let tarefa of tarefas" [class.tarefa-concluida]="tarefa.concluida" (click)="showTask(tarefa)" class="task-card">
       <mat-card-header>
         <mat-card-title>{{ tarefa.titulo }}</mat-card-title>
-        <button (click)="showTask(tarefa)">Visualizar tarefa</button>
         <mat-card-subtitle *ngIf="tarefa.descricao">{{ tarefa.descricao }}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-actions align="end">

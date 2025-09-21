@@ -1,0 +1,24 @@
+<div class="form-container">
+  <mat-card>
+    <mat-card-title>Acessar sua Conta</mat-card-title>
+    <mat-card-content>
+      <form (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+          <mat-label>Nome de Usuário</mat-label>
+          <input matInput [(ngModel)]="credentials.username" name="username" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Senha</mat-label>
+          <input matInput type="password" [(ngModel)]="credentials.password" name="password" required>
+        </mat-form-field>
+        
+        <button mat-raised-button color="primary" type="submit">Entrar</button>
+      </form>
+    </mat-card-content>
+    <mat-card-actions class="redirect-actions">
+      <span>Não tem uma conta?</span>
+      <a mat-button color="primary" routerLink="/register">Cadastre-se</a>
+    </mat-card-actions>
+  </mat-card>
+</div>

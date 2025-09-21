@@ -3,6 +3,7 @@ import { TaskService } from 'src/app/task.service';
 import { Tarefa } from 'src/app/tarefa.model';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTaskComponent } from 'src/app/add-task/add-task.component';
+import { TaskDetailComponent } from '../../components/task-detail/task-detail.component';
 
 @Component({
   selector: 'app-task-list',
@@ -69,10 +70,9 @@ export class TaskListComponent {
     }
 
     showTask(tarefa: Tarefa): void {
-      this.taskService.showTask(tarefa).subscribe({
-        next: () => {
-          console.log
-        }
-      })
+      this.dialog.open(TaskDetailComponent, {
+        width: '450px',
+        data: tarefa
+      });
     }
 }

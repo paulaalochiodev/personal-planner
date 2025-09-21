@@ -30,9 +30,4 @@ export class TaskService {
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete<void>(url);
   }
-
-  showTask(tarefa: Tarefa): Observable<Tarefa[]> {
-    const url = `${this.apiUrl}/${tarefa.id}`;
-    return this.http.get<Tarefa[]>(url);
-  }
 }

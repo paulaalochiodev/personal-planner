@@ -18,10 +18,9 @@
 .task-list {
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Espaço entre os cards */
+  gap: 15px;
 }
 
-/* Regra para riscar o texto do título e subtítulo quando o card tiver a classe */
 .tarefa-concluida mat-card-title,
 .tarefa-concluida mat-card-subtitle {
   text-decoration: line-through;
