@@ -7,7 +7,8 @@ import { AppComponent } from './app.component';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule } from '@angular/material/button'; 
+
+import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,6 +16,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatTimepickerModule } from '@angular/material/timepicker';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { TaskListComponent } from './pages/task-list/task-list.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
@@ -23,8 +27,21 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
-import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';   
+import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { AuthInterceptor } from './auth.interceptor';
+
+// Formatos para exibir data+hora no input do datetime picker
+export const CUSTOM_NGX_MAT_DATE_FORMATS: NgxMatDateFormats = {
+  parse: {
+    dateInput: 'dd/MM/yyyy HH:mm'
+  },
+  display: {
+    dateInput: 'dd/MM/yyyy HH:mm',
+    monthYearLabel: 'MMM yyyy',
+    dateA11yLabel: 'dd/MM/yyyy HH:mm',
+    monthYearA11yLabel: 'MMMM yyyy'
+  }
+};
 
 @NgModule({
   declarations: [
@@ -48,15 +65,19 @@ import { AuthInterceptor } from './auth.interceptor';
     MatInputModule,
     MatIconModule,
     MatDialogModule,
-    MatCardModule,     
+    MatCardModule,
     MatToolbarModule,
     MatSlideToggleModule,
+    MatNativeDateModule,
+    MatTimepickerModule,
+    MatDatepickerModule,
     FullCalendarModule,
     MatListModule,
     MatSidenavModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
   ],
   bootstrap: [AppComponent]
 })

@@ -4,4 +4,10 @@ export interface Tarefa {
   descricao: string;
   concluida: boolean;
   data: string;
+  incluirHorario?: boolean;
+  incluirFim?: boolean;
+  horaInicio?: string;
+  horaFim?: string;
+  startDateTime?: string;
+  endDateTime?: string;       
 }

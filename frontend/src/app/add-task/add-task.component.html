@@ -2,6 +2,7 @@
 
 <mat-dialog-content>
   <form (ngSubmit)="onSubmit()" #taskForm="ngForm" class="task-form">
+
     <mat-form-field appearance="outline">
       <mat-label>Título</mat-label>
       <input matInput name="titulo" [(ngModel)]="newTask.titulo" required>
@@ -12,10 +13,49 @@
       <input matInput name="descricao" [(ngModel)]="newTask.descricao">
     </mat-form-field>
 
+    <!-- Datepicker básico -->
     <mat-form-field appearance="outline">
-    <mat-label>Data da Tarefa</mat-label>
-    <input matInput type="date" name="data" [(ngModel)]="newTask.data">
-  </mat-form-field>
+      <mat-label>Data rápida</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="datePickerValue" name="datePickerValue" placeholder="Selecione">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-slide-toggle [(ngModel)]="includeTime" name="includeTime">Incluir horário</mat-slide-toggle>
+
+    <!-- Datetime inicial -->
+    <mat-form-field>
+      <mat-label>Pick a time</mat-label>
+      <input matInput [matTimepicker]="picker">
+      <mat-timepicker-toggle matIconSuffix [for]="picker"/>
+      <mat-timepicker #picker/>
+   </mat-form-field>
+
+
+      <!-- <mat-slide-toggle [(ngModel)]="includeEndTime" name="includeEndTime" [disabled]="!includeRange">
+        Hora fim
+      </mat-slide-toggle> -->
+
+      <!-- Datetime final -->
+      <mat-form-field *ngIf="includeRange" appearance="outline">
+        <mat-label>Fim (data e hora)</mat-label>
+        <input matInput
+               [ngxMatDatetimePicker]="endPicker"
+               [(ngModel)]="endDateTime"
+               name="endDateTime"
+               placeholder="Selecionar"
+               readonly>
+        <ngx-mat-datetime-picker #endPicker [enableMeridian]="false"></ngx-mat-datetime-picker>
+      </mat-form-field>
+    </div>
+
+    <div class="summary" *ngIf="startDateTime">
+      <strong>Resumo:</strong>
+      <div>
+        {{ startDateTime | date:'dd/MM/yyyy HH:mm' }}
+        <span *ngIf="includeRange && endDateTime"> → {{ endDateTime | date:'dd/MM/yyyy HH:mm' }}</span>
+      </div>
+    </div>
 
   </form>
 </mat-dialog-content>
