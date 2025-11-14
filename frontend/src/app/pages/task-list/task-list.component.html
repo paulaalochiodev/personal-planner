@@ -1,5 +1,4 @@
 <main class="content">
-  <app-sidenav></app-sidenav>
   <div class="header">
     <h2>Minhas Tarefas</h2>
     <button mat-fab color="primary" (click)="openAddTaskDialog()" title="Adicionar nova tarefa">
@@ -19,7 +18,7 @@
           (change)="toggleConcluida(tarefa)">
           Concluída
         </mat-slide-toggle>
-        <button mat-icon-button color="warn" (click)="deleteTask(tarefa.id)" title="Deletar tarefa">
+        <button mat-icon-button color="warn" (click)="deleteTask(tarefa.id); $event.stopPropagation()" title="Deletar tarefa">
           <mat-icon>delete</mat-icon>
         </button>
       </mat-card-actions>

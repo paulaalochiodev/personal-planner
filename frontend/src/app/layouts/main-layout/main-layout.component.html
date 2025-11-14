@@ -1,5 +1,4 @@
 <mat-sidenav-container class="sidenav-container">
-
   <mat-sidenav #sidenav mode="side" opened class="sidenav">
     <div class="profile-section">
       <img src="https://via.placeholder.com/80" alt="Foto do Usuário" class="profile-pic">
@@ -16,17 +15,6 @@
         <span>Calendário</span>
       </a>
     </mat-nav-list>
-
-    <hr> <mat-nav-list>
-      <a mat-list-item routerLink="/login">
-        <mat-icon>login</mat-icon>
-        <span>Login</span>
-      </a>
-      <a mat-list-item routerLink="/register">
-        <mat-icon>person_add</mat-icon>
-        <span>Cadastrar</span>
-      </a>
-    </mat-nav-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
@@ -39,5 +27,4 @@
     
     <router-outlet></router-outlet>
   </mat-sidenav-content>
-
 </mat-sidenav-container>

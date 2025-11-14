@@ -6,8 +6,6 @@ services:
     container_name: personal_planner_db
     restart: always
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: personalplanner1509
       POSTGRES_DB: personal_planner_db
     ports:
       - "5433:5432"

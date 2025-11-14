@@ -64,8 +64,8 @@ public class SecurityConfig {
                 .formLogin(form -> form.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers( "/index.html", "/login", "/register", "/api/auth/**").permitAll() // Permite acesso público aos endpoints de auth
-                        .anyRequest().authenticated() // Exige autenticação para o resto
+                        .requestMatchers( "/api/tarefas","index.html", "/login", "/register", "/api/auth/**").permitAll()
+                        .anyRequest().authenticated()
                 );
         return http.build();
     }

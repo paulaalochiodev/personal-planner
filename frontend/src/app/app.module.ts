@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,7 +23,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
-import { SidenavComponent } from './components/sidenav/sidenav.component';   
+import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';   
+import { AuthInterceptor } from './auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     TaskDetailComponent,
     RegisterComponent,
     LoginComponent,
-    SidenavComponent
+    MainLayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +55,9 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     MatListModule,
     MatSidenavModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
