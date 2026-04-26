@@ -56,6 +56,22 @@ export class TaskListComponent {
         }
       });
     }
+
+    editTask(tarefa: Tarefa): void {
+      const dialogRef = this.dialog.open(AddTaskComponent, {
+        width: '450px',
+        data: tarefa
+      })
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          const index = this.tarefas.findIndex(t => t.id === result.id);
+          if (index !== -1) {
+            this.tarefas[index] = result;
+          }
+        }
+      });
+    }
   
     deleteTask(id: string): void {
       this.taskService.deleteTask(id).subscribe({

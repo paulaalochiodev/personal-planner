@@ -18,7 +18,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
-import { MatTimepickerModule } from '@angular/material/timepicker';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { TaskListComponent } from './pages/task-list/task-list.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
@@ -29,19 +28,6 @@ import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { AuthInterceptor } from './auth.interceptor';
-
-// Formatos para exibir data+hora no input do datetime picker
-export const CUSTOM_NGX_MAT_DATE_FORMATS: NgxMatDateFormats = {
-  parse: {
-    dateInput: 'dd/MM/yyyy HH:mm'
-  },
-  display: {
-    dateInput: 'dd/MM/yyyy HH:mm',
-    monthYearLabel: 'MMM yyyy',
-    dateA11yLabel: 'dd/MM/yyyy HH:mm',
-    monthYearA11yLabel: 'MMMM yyyy'
-  }
-};
 
 @NgModule({
   declarations: [
@@ -69,7 +55,6 @@ export const CUSTOM_NGX_MAT_DATE_FORMATS: NgxMatDateFormats = {
     MatToolbarModule,
     MatSlideToggleModule,
     MatNativeDateModule,
-    MatTimepickerModule,
     MatDatepickerModule,
     FullCalendarModule,
     MatListModule,

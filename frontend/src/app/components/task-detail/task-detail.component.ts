@@ -11,5 +11,8 @@ export class TaskDetailComponent {
 
   constructor (@Inject(MAT_DIALOG_DATA) public tarefa: Tarefa) {}
 
-  
+  formatarData(data: string): string {
+    const [ano, mes, dia] = data.split('-');
+    return `${dia}/${mes}/${ano}`;
+  }
 }

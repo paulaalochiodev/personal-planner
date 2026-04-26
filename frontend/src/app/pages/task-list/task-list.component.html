@@ -18,7 +18,20 @@
           (change)="toggleConcluida(tarefa)">
           Concluída
         </mat-slide-toggle>
-        <button mat-icon-button color="warn" (click)="deleteTask(tarefa.id); $event.stopPropagation()" title="Deletar tarefa">
+
+        <button
+          mat-icon-button
+          color="primary"
+          (click)="editTask(tarefa); $event.stopPropagation()"
+          title="Editar tarefa">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          color="warn"
+          (click)="deleteTask(tarefa.id); $event.stopPropagation()"
+          title="Deletar tarefa">
           <mat-icon>delete</mat-icon>
         </button>
       </mat-card-actions>

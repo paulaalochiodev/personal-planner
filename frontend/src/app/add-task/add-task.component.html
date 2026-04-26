@@ -1,4 +1,6 @@
-<h2 mat-dialog-title>Adicionar Nova Tarefa</h2>
+<h2 mat-dialog-title>
+  {{ isEditMode ? 'Editar tarefa' : 'Adicionar nova tarefa'}}
+</h2>
 
 <mat-dialog-content>
   <form (ngSubmit)="onSubmit()" #taskForm="ngForm" class="task-form">
@@ -13,54 +15,33 @@
       <input matInput name="descricao" [(ngModel)]="newTask.descricao">
     </mat-form-field>
 
-    <!-- Datepicker básico -->
     <mat-form-field appearance="outline">
-      <mat-label>Data rápida</mat-label>
-      <input matInput [matDatepicker]="picker" [(ngModel)]="datePickerValue" name="datePickerValue" placeholder="Selecione">
+      <mat-label>Data</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        [(ngModel)]="datePickerValue"
+        name="datePickerValue"
+        required
+        placeholder="Selecione a data">
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
-    <mat-slide-toggle [(ngModel)]="includeTime" name="includeTime">Incluir horário</mat-slide-toggle>
-
-    <!-- Datetime inicial -->
-    <mat-form-field>
-      <mat-label>Pick a time</mat-label>
-      <input matInput [matTimepicker]="picker">
-      <mat-timepicker-toggle matIconSuffix [for]="picker"/>
-      <mat-timepicker #picker/>
-   </mat-form-field>
-
-
-      <!-- <mat-slide-toggle [(ngModel)]="includeEndTime" name="includeEndTime" [disabled]="!includeRange">
-        Hora fim
-      </mat-slide-toggle> -->
-
-      <!-- Datetime final -->
-      <mat-form-field *ngIf="includeRange" appearance="outline">
-        <mat-label>Fim (data e hora)</mat-label>
-        <input matInput
-               [ngxMatDatetimePicker]="endPicker"
-               [(ngModel)]="endDateTime"
-               name="endDateTime"
-               placeholder="Selecionar"
-               readonly>
-        <ngx-mat-datetime-picker #endPicker [enableMeridian]="false"></ngx-mat-datetime-picker>
-      </mat-form-field>
-    </div>
-
-    <div class="summary" *ngIf="startDateTime">
-      <strong>Resumo:</strong>
-      <div>
-        {{ startDateTime | date:'dd/MM/yyyy HH:mm' }}
-        <span *ngIf="includeRange && endDateTime"> → {{ endDateTime | date:'dd/MM/yyyy HH:mm' }}</span>
-      </div>
-    </div>
+    <mat-slide-toggle [(ngModel)]="newTask.concluida" name="concluida">
+      Marcar como concluída
+    </mat-slide-toggle>
 
   </form>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
   <button mat-button (click)="onCancel()">Cancelar</button>
-  <button mat-raised-button color="primary" [disabled]="!taskForm.form.valid" (click)="onSubmit()">Salvar</button>
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="!taskForm.form.valid"
+    (click)="onSubmit()">
+    {{ isEditMode ? 'Atualizar' : 'Salvar' }}
+  </button>
 </mat-dialog-actions>
