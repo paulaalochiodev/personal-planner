@@ -1,5 +1,6 @@
 package com.example.personalplanner.controller;
 
+import com.example.personalplanner.dto.RegisterResponse;
 import com.example.personalplanner.model.User;
 import com.example.personalplanner.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,15 @@ public class AuthController {
     private AuthService authService;
 
     @PostMapping("/register")
-    public ResponseEntity<User> register(@RequestBody User user) {
+    public ResponseEntity<RegisterResponse> register(@RequestBody User user) {
         User savedUser = authService.registerUser(user);
-        return ResponseEntity.ok(savedUser);
+
+        RegisterResponse response = new RegisterResponse(
+                savedUser.getId(),
+                savedUser.getUsername()
+        );
+
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/login")
