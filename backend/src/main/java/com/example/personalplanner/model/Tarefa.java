@@ -9,6 +9,7 @@ import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 import org.hibernate.annotations.UuidGenerator;
 
@@ -27,7 +28,11 @@ public class Tarefa {
 
     private Boolean concluida;
 
-    private LocalDate data;
+    private LocalDateTime dataInicio;
+
+    private LocalDateTime dataFim;
+
+    private Boolean incluirHora;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

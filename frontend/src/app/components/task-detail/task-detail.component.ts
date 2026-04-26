@@ -9,10 +9,35 @@ import { Tarefa } from 'src/app/tarefa.model';
 })
 export class TaskDetailComponent {
 
-  constructor (@Inject(MAT_DIALOG_DATA) public tarefa: Tarefa) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public tarefa: Tarefa) {}
 
-  formatarData(data: string): string {
-    const [ano, mes, dia] = data.split('-');
-    return `${dia}/${mes}/${ano}`;
+  private parseDateTime(value: string): { date: string; time: string } {
+    const [datePart, timePart = '00:00:00'] = value.split('T');
+    const [year, month, day] = datePart.split('-');
+    const [hours, minutes] = timePart.split(':');
+
+    return {
+      date: `${day}/${month}/${year}`,
+      time: `${hours}:${minutes}`
+    };
+  }
+
+  formatarPeriodo(): string {
+    const inicio = this.parseDateTime(this.tarefa.dataInicio);
+
+    if (!this.tarefa.dataFim) {
+      return this.tarefa.incluirHora
+        ? `${inicio.date} às ${inicio.time}`
+        : inicio.date;
+    }
+
+    const fim = this.parseDateTime(this.tarefa.dataFim);
+
+    if (this.tarefa.incluirHora) {
+      return `${inicio.date} às ${inicio.time} -> ${fim.date} às ${fim.time}`;
+    }
+
+    return `${inicio.date} -> ${fim.date}`;
   }
 }
+

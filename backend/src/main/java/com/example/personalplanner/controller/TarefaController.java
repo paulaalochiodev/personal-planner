@@ -61,7 +61,9 @@ public class TarefaController {
                     tarefa.setTitulo(tarefaDetalhes.getTitulo());
                     tarefa.setDescricao(tarefaDetalhes.getDescricao());
                     tarefa.setConcluida(tarefaDetalhes.getConcluida());
-                    tarefa.setData(tarefaDetalhes.getData());
+                    tarefa.setDataInicio(tarefaDetalhes.getDataInicio());
+                    tarefa.setDataFim(tarefaDetalhes.getDataFim());
+                    tarefa.setIncluirHora(tarefaDetalhes.getIncluirHora());
                     Tarefa tarefaAtualizada = tarefaRepository.save(tarefa);
                     return ResponseEntity.ok(tarefaAtualizada);
                 })

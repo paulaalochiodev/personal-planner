@@ -2,7 +2,7 @@
 
 <mat-dialog-content>
   <p><strong>Descrição:</strong> {{ tarefa.descricao || 'Nenhuma descrição fornecida.' }}</p>
-  <p><strong>Data:</strong> {{ formatarData(tarefa.data) }}</p>
+  <p><strong>Período:</strong> {{ formatarPeriodo() }}</p>
   <p><strong>Status:</strong> {{ tarefa.concluida ? 'Concluída' : 'Pendente' }}</p>
 </mat-dialog-content>
 

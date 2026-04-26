@@ -3,11 +3,7 @@ export interface Tarefa {
   titulo: string;
   descricao: string;
   concluida: boolean;
-  data: string;
-  incluirHorario?: boolean;
-  incluirFim?: boolean;
-  horaInicio?: string;
-  horaFim?: string;
-  startDateTime?: string;
-  endDateTime?: string;       
+  dataInicio: string;
+  dataFim?: string | null;
+  incluirHora: boolean;
 }
